@@ -1,4 +1,6 @@
-<form #regForm="ngForm" (ngSubmit)="processForm(regForm.value)" fxLayout="column" fxLayoutAlign="space-around">
+<div fxLayout="row" fxLayoutAlign="center" style="margin-top:20px; margin-bottom: 20px;">
+  
+<form #regForm="ngForm" (ngSubmit)="processForm(regForm.value)" fxLayout="column">
   <mat-toolbar color="primary">
     <h1>High School Reunion Registration Form</h1>
   </mat-toolbar>
@@ -76,6 +78,11 @@
     <input matInput type="textarea" id="comment" name="comment" placeholder="Input your comments here" ngModel />
   </mat-form-field>
 
-
-  <button mat-raised-button color="primary" type="submit">Submit</button>
+  <div fxLayout="row" fxLayoutAlign="space-around center">
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+    <button mat-raised-button color="primary" type="submit">Cancel</button>
+  </div>
+  <br>
+ 
 </form>
+</div>
