@@ -1,6 +1,7 @@
 <form #regForm="ngForm" (ngSubmit)="processForm(regForm.value)" fxLayout="column" fxLayoutAlign="space-around">
-  <h1>High School Reunion Registration Form</h1>
-  <hr>
+  <mat-toolbar color="primary">
+    <h1>High School Reunion Registration Form</h1>
+  </mat-toolbar>
   <label for="attending_date">Attending</label>
   <input type="date" id="date" name="date" ngModel />
   <br>
@@ -41,39 +42,40 @@
   </mat-form-field>
   <br>
 
-  <label for="event_1">Which event will you be attending?</label>
-  <div fxLayout="column" fxLayoutGap=2vh>
-      <div class="checkboxes">
-          Friday night cookout <input type="checkbox" id="event_1" name="event_1" ngModel /> 
-        </div>
-        <div class="checkboxes">
-            Saturday breakfast <input type="checkbox" id="event_2" name="event_2" ngModel /> 
-        </div>
-        <div class="checkboxes">
-            Saturday lunch <input type="checkbox" id="event_3" name="event_3" ngModel /> 
-        </div>
-        <div class="checkboxes">
-            Saturday formal dinner <input type="checkbox" id="event_4" name="event_4" ngModel /> 
-        </div>
+  <div fxLayout="column" fxLayoutGap="3vh">
+    <label for="event_1">Which event will you be attending?</label>
+    <div fxLayout="row" fxLayoutAlign="space-between" class="checkboxes">
+      Friday night cookout <input type="checkbox" id="event_1" name="event_1" ngModel />
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between" class="checkboxes">
+      Saturday breakfast <input type="checkbox" id="event_2" name="event_2" ngModel />
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between" class="checkboxes">
+      Saturday lunch <input type="checkbox" id="event_3" name="event_3" ngModel />
+    </div>
+    <div fxLayout="row" fxLayoutAlign="space-between" class="checkboxes">
+      Saturday formal dinner <input type="checkbox" id="event_4" name="event_4" ngModel />
+    </div>
   </div>
 
   <br>
 
-  <label for="dvd">Would you like to pre-order reunion DVD ($19.95)?</label>
-  <div>
-    <input type="radio" id="dvd_1" name="req_dvd" value="1" ngModel /> Yes
-
-  </div>
-  <div>
-    <input type="radio" id="dvd_2" name="req_dvd" value="0" ngModel /> No
+  <div fxLayout="column" fxLayoutGap="3vh">
+    <label for="dvd">Would you like to pre-order reunion DVD ($19.95)?</label>
+    <div>
+      <input type="radio" id="dvd_1" name="req_dvd" value="1" ngModel /> Yes
+    </div>
+    <div>
+      <input type="radio" id="dvd_2" name="req_dvd" value="0" ngModel /> No
+    </div>
   </div>
   <br>
 
   <label for="comment">Comments or Questions</label>
   <mat-form-field>
-      <input matInput type="textarea" id="comment" name="comment" placeholder="Input your comments here" ngModel />
+    <input matInput type="textarea" id="comment" name="comment" placeholder="Input your comments here" ngModel />
   </mat-form-field>
-  
+
 
   <button mat-raised-button color="primary" type="submit">Submit</button>
 </form>
