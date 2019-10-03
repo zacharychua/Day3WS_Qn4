@@ -23,7 +23,7 @@ export class RegistrationComponent implements OnInit {
     console.info(form_value_keys);
     for(let key of form_value_keys){
       if(key.includes("event")) 
-        if(form_value[key]) {events.push({key:form_value[key]});
+        if(form_value[key]) events.push({key:form_value[key]});
     }
     console.info(new Date(form_value.attending_date));
     //explicit assignment allows more flexibility when processing values from form
@@ -50,3 +50,4 @@ export class RegistrationComponent implements OnInit {
   }
 
 }
+

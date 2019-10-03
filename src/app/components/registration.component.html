@@ -1,52 +1,79 @@
-<form #regForm="ngForm" (ngSubmit)="processForm(regForm.value)" fxLayout="column">
-        <h1>High School Reunion Registration Form</h1>
-        <hr>
-        <label for="attending_date">Attending</label>
-        <input type="date" id="date" name="date" ngModel/>
-        <br>
-        <label for="name_first">Name</label>
-        <div>
-            <input type="text" id="name_first" name="first_name" placeholder="First Name" ngModel/>
-            <input type="text" id="name_last" name="last_name" placeholder="Last Name" ngModel/>
+<form #regForm="ngForm" (ngSubmit)="processForm(regForm.value)" fxLayout="column" fxLayoutAlign="space-around">
+  <h1>High School Reunion Registration Form</h1>
+  <hr>
+  <label for="attending_date">Attending</label>
+  <input type="date" id="date" name="date" ngModel />
+  <br>
+
+  <label for="name_first">Name</label>
+  <div fxLayout="row" fxLayoutGap="5vw">
+    <mat-form-field>
+      <input matInput type="text" id="name_first" name="first_name" placeholder="First Name" ngModel />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" id="name_last" name="last_name" placeholder="Last Name" ngModel />
+    </mat-form-field>
+  </div>
+  <br>
+
+  <label for="guest_first">Spouse or Guest Name</label>
+  <div fxLayout="row" fxLayoutGap="5vw">
+    <mat-form-field>
+      <input matInput type="text" id="guest_first" name="guest_first_name" placeholder="Guest's First Name" ngModel />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" id="guest_last" name="guest_last_name" placeholder="Guest's Last Name" ngModel />
+    </mat-form-field>
+  </div>
+  <br>
+
+  <label for="phone_number">Phone Number</label>
+  <div>
+    <mat-form-field>
+      <input matInput type="text" id="phone_number" name="phone_num" placeholder="###" ngModel />
+    </mat-form-field>
+  </div>
+  <br>
+
+  <label for="email">Email *</label>
+  <mat-form-field>
+    <input matInput type="text" id="email" name="email" placeholder="example@gmail.com" ngModel />
+  </mat-form-field>
+  <br>
+
+  <label for="event_1">Which event will you be attending?</label>
+  <div fxLayout="column" fxLayoutGap=2vh>
+      <div class="checkboxes">
+          Friday night cookout <input type="checkbox" id="event_1" name="event_1" ngModel /> 
         </div>
-        <br>
-          <label for="guest_first">Spouse or Guest Name</label>
-        <div>
-            <input type="text" id="guest_first" name="guest_first_name" placeholder="Guest's First Name" ngModel/>
-            <input type="text" id="guest_last" name="guest_last_name" placeholder="Guest's Last Name" ngModel/>
+        <div class="checkboxes">
+            Saturday breakfast <input type="checkbox" id="event_2" name="event_2" ngModel /> 
         </div>
-        <br>
-        <label for="phone_number">Phone Number</label>
-        <div>
-          <input type="text" id="phone_number" name="phone_num" placeholder="###" ngModel/> 
+        <div class="checkboxes">
+            Saturday lunch <input type="checkbox" id="event_3" name="event_3" ngModel /> 
         </div>
-        <br>
-        <label for="email">Email *</label>
-        <input type="text" id="email" name="email" placeholder="example@gmail.com" ngModel/>
-        <br>
-        <label for="event_1">Which event will you be attending?</label>
-        <div>
-          <input type="checkbox" id="event_1" name="event_1" ngModel/> Friday night cookout
+        <div class="checkboxes">
+            Saturday formal dinner <input type="checkbox" id="event_4" name="event_4" ngModel /> 
         </div>
-        <div>
-          <input type="checkbox" id="event_2" name="event_2" ngModel/> Saturday breakfast
-        </div>
-        <div>
-          <input type="checkbox" id="event_3" name="event_3" ngModel/> Saturday lunch
-        </div>
-        <div>
-          <input type="checkbox" id="event_4" name="event_4" ngModel/> Saturday formal dinner
-        </div>
-        <br>
-        <label for="dvd">Would you like to pre-order reunion DVD ($19.95)?</label>
-        <div>
-          <input type="radio" id="dvd_1" name="req_dvd" value="1" ngModel/> Yes
-        </div>
-        <div>
-          <input type="radio" id="dvd_2" name="req_dvd" value="0" ngModel/> No
-        </div>  
-        <br>
-        <label for="comment">Comments or Questions</label>
-        <input type="textarea" id="comment" name="comment" placeholder="Input your comments here" ngModel/>
-        <button type="submit">Submit</button>
-      </form>
+  </div>
+
+  <br>
+
+  <label for="dvd">Would you like to pre-order reunion DVD ($19.95)?</label>
+  <div>
+    <input type="radio" id="dvd_1" name="req_dvd" value="1" ngModel /> Yes
+
+  </div>
+  <div>
+    <input type="radio" id="dvd_2" name="req_dvd" value="0" ngModel /> No
+  </div>
+  <br>
+
+  <label for="comment">Comments or Questions</label>
+  <mat-form-field>
+      <input matInput type="textarea" id="comment" name="comment" placeholder="Input your comments here" ngModel />
+  </mat-form-field>
+  
+
+  <button mat-raised-button color="primary" type="submit">Submit</button>
+</form>
