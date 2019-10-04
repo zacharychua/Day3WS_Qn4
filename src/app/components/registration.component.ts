@@ -20,7 +20,8 @@ export class RegistrationComponent implements OnInit {
     this.guest_num.push(this.guest_i);
   }
 
-  processForm(form_value: any){
+  processForm(form: NgForm){
+    let form_value: any = form.value;
     let events = [];
     let guest_first_names = [];
     let guest_last_names = [];
@@ -54,7 +55,7 @@ export class RegistrationComponent implements OnInit {
       "comment": form_value.comment
     }
     //if no manipulation of the data is required, we can just cast to the object as such let reg:registration = <registration>form_value
-    
+    form.resetForm();
     console.info(reg);
     //console.info(form_value instanceof registration);
   }
