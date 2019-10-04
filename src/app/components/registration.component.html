@@ -36,13 +36,13 @@
           placeholder="Guest's First Name" ngModel />
       </mat-form-field>
       <div fxLayout="row" fxLayoutAlign="start center">
-          <div fxLayout="row" fxLayoutAlign="space-between center">
-        <mat-form-field>
-          <input matInput type="text" [id]="'guest_last_' + guest" [name]="'guest_last_' + guest"
-            placeholder="Guest's Last Name" ngModel />
-        </mat-form-field>
-        
-            <button class="person" mat-button *ngIf="guest === guest_num.length" color="primary" type="button"
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <mat-form-field>
+            <input matInput type="text" [id]="'guest_last_' + guest" [name]="'guest_last_' + guest"
+              placeholder="Guest's Last Name" ngModel />
+          </mat-form-field>
+
+          <button class="person" mat-button *ngIf="guest === guest_num.length" color="primary" type="button"
             (click)="addGuests()">
             <mat-icon>exposure_plus_1</mat-icon>
           </button>
@@ -82,31 +82,40 @@
 
     <div fxLayout="column" fxLayoutGap="3vh">
       <label for="event_1">Which event will you be attending?</label>
-      <div fxLayout="row" fxLayoutAlign="space-between" class="checkboxes">
-        Friday night cookout <input type="checkbox" id="event_1" name="event_1" ngModel />
-      </div>
-      <div fxLayout="row" fxLayoutAlign="space-between" class="checkboxes">
-        Saturday breakfast <input type="checkbox" id="event_2" name="event_2" ngModel />
-      </div>
-      <div fxLayout="row" fxLayoutAlign="space-between" class="checkboxes">
-        Saturday lunch <input type="checkbox" id="event_3" name="event_3" ngModel />
-      </div>
-      <div fxLayout="row" fxLayoutAlign="space-between" class="checkboxes">
-        Saturday formal dinner <input type="checkbox" id="event_4" name="event_4" ngModel />
-      </div>
+      <mat-checkbox id="event_1" name="event_1" ngModel>
+        Friday night cookout
+      </mat-checkbox>
+      <mat-checkbox id="event_2" name="event_2" ngModel>
+        Saturday breakfast
+      </mat-checkbox>
+      <mat-checkbox id="event_3" name="event_3" ngModel>
+        Saturday lunch
+      </mat-checkbox>
+      <mat-checkbox id="event_4" name="event_4" ngModel>
+        Saturday formal dinner
+      </mat-checkbox>
     </div>
     <br>
     <br>
 
-    <div fxLayout="column" fxLayoutGap="3vh">
+    <div fxLayout="column" fxLayoutGap="2vh">
+      <!--
+        <label id="dvd">Would you like to pre-order reunion DVD ($19.95)?</label>
+        <mat-radio-group aria-labelledby="dvd" fxLayout="column" fxLayoutGap="2vh" [(ngModel)]="req_dvd" [ngModelOptions]="{standalone: true}">
+          <mat-radio-button id="dvd_1" value="1" ngModel> Yes </mat-radio-button>
+          <mat-radio-button id="dvd_2" value="0" ngModel> No </mat-radio-button>
+        </mat-radio-group>
+      -->
       <label for="dvd">Would you like to pre-order reunion DVD ($19.95)?</label>
       <div>
-        <input type="radio" id="dvd_1" name="req_dvd" value="1" ngModel /> Yes
+          <input type="radio" id="dvd_1" name="dvd_1" value="1" ngModel> Yes 
       </div>
       <div>
-        <input type="radio" id="dvd_2" name="req_dvd" value="0" ngModel /> No
+          <input type="radio" id="dvd_2" name="dvd_2" value="0" ngModel> No
       </div>
     </div>
+
+
     <br>
     <br>
 
@@ -136,38 +145,38 @@
     <br>
     <div>
       <mat-hint class="inline" *ngIf="dateField.untouched">
-          &bull;&nbsp;Date needs to be filled&nbsp;
+        &bull;&nbsp;Date needs to be filled&nbsp;
       </mat-hint>
       <mat-error class="inline" *ngIf="dateField.invalid && dateField.touched">
-          &bull;&nbsp;Date is not filled or invalid&nbsp;
+        &bull;&nbsp;Date is not filled or invalid&nbsp;
       </mat-error>
 
       <mat-hint class="inline" *ngIf="firstNameField.untouched">
-          &bull;&nbsp;First name needs to be filled&nbsp;
+        &bull;&nbsp;First name needs to be filled&nbsp;
       </mat-hint>
       <mat-error class="inline" *ngIf="firstNameField.invalid && firstNameField.touched">
-          &bull;&nbsp;First name is not filled or invalid&nbsp;
+        &bull;&nbsp;First name is not filled or invalid&nbsp;
       </mat-error>
 
       <mat-hint *ngIf="secondNameField.untouched">
-          &bull;&nbsp;Second name needs to be filled&nbsp;
+        &bull;&nbsp;Second name needs to be filled&nbsp;
       </mat-hint>
       <mat-error *ngIf="secondNameField.invalid && secondNameField.touched">
-          &bull;&nbsp;Second name is not filled or invalid&nbsp;
+        &bull;&nbsp;Second name is not filled or invalid&nbsp;
       </mat-error>
 
       <mat-hint class="inline" *ngIf="emailField.untouched">
-          &bull;&nbsp;Email needs to be filled&nbsp;
+        &bull;&nbsp;Email needs to be filled&nbsp;
       </mat-hint>
       <mat-error class="inline" *ngIf="emailField.invalid && emailField.touched">
-          &bull;&nbsp;Email is not filled or invalid&nbsp;
+        &bull;&nbsp;Email is not filled or invalid&nbsp;
       </mat-error>
 
       <mat-hint class="inline" *ngIf="secretField.untouched">
-          &bull;&nbsp;Secret needs to be filled&nbsp;
+        &bull;&nbsp;Secret needs to be filled&nbsp;
       </mat-hint>
       <mat-error class="inline" *ngIf="secretField.invalid && secretField.touched">
-          &bull;&nbsp;Secret is not filled or invalid&nbsp;
+        &bull;&nbsp;Secret is not filled or invalid&nbsp;
       </mat-error>
     </div>
 

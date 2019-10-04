@@ -9,6 +9,7 @@ import {registration} from '../models';
 })
 export class RegistrationComponent implements OnInit {
 
+  //req_dvd; //used for Angular Material's Radio Button
   guest_i: number;
   guest_num: number[];
 
