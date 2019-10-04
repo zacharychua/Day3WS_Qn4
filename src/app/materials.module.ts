@@ -6,10 +6,10 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatMomentDateModule} from '@angular/material-moment-adapter'
 import {MatToolbarModule} from '@angular/material/toolbar';
 
-const MATERIAL = [ MatInputModule, MatButtonModule, MatIconModule,MatDatepickerModule, MatToolbarModule, MatMomentDateModule];
+const MATERIAL = [ MatInputModule, MatButtonModule, MatIconModule, MatDatepickerModule, MatToolbarModule, MatMomentDateModule];
 
 @NgModule({
-imports: MATERIAL,
+//imports: MATERIAL,
 exports: MATERIAL
 })
 

@@ -4,33 +4,55 @@
     <mat-toolbar color="primary">
       <h1>High School Reunion Registration Form</h1>
     </mat-toolbar>
-    <label for="attending_date">Attending</label>
+    <label for="attending_date">Attending <span>*</span></label>
     <mat-form-field>
-      <input matInput [matDatepicker]="picker" placeholder="Choose a date" ngModel>
+      <input type="datetime" #dateField="ngModel" name="attending_date" matInput [matDatepicker]="picker"
+        placeholder="Choose a date" required ngModel>
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <br>
 
-    <label for="name_first">Name</label>
+    <label for="name_first">Name <span>*</span></label>
     <div fxLayout="row" fxLayoutGap="5vw">
       <mat-form-field>
-        <input matInput type="text" id="name_first" name="first_name" placeholder="First Name" ngModel />
+        <input matInput #firstNameField="ngModel" type="text" id="name_first" name="first_name" placeholder="First Name"
+          ngModel required />
       </mat-form-field>
       <mat-form-field>
-        <input matInput type="text" id="name_last" name="last_name" placeholder="Last Name" ngModel />
+        <input matInput #secondNameField="ngModel" type="text" id="name_last" name="last_name" placeholder="Last Name"
+          ngModel required />
       </mat-form-field>
     </div>
     <br>
 
-    <label for="guest_first">Spouse or Guest Name</label>
-    <div fxLayout="row" fxLayoutGap="5vw">
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="1vw">
+      <label for="guest_first">Spouse or Guest Name</label>
+    </div>
+
+    <div fxLayout="row" fxLayoutGap="2vw" *ngFor="let guest of guest_num">
       <mat-form-field>
-        <input matInput type="text" id="guest_first" name="guest_first_name" placeholder="Guest's First Name" ngModel />
+        <input matInput type="text" [id]="'guest_first_' + guest" [name]="'guest_first_' + guest"
+          placeholder="Guest's First Name" ngModel />
       </mat-form-field>
-      <mat-form-field>
-        <input matInput type="text" id="guest_last" name="guest_last_name" placeholder="Guest's Last Name" ngModel />
-      </mat-form-field>
+      <div fxLayout="row" fxLayoutAlign="start center">
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-form-field>
+          <input matInput type="text" [id]="'guest_last_' + guest" [name]="'guest_last_' + guest"
+            placeholder="Guest's Last Name" ngModel />
+        </mat-form-field>
+        
+            <button class="person" mat-button *ngIf="guest === guest_num.length" color="primary" type="button"
+            (click)="addGuests()">
+            <mat-icon>exposure_plus_1</mat-icon>
+          </button>
+          <button class="person" mat-button *ngIf="guest === guest_num.length && guest_num.length > 1" color="accent"
+            type="button" (click)="removeGuests()">
+            <mat-icon>exposure_neg_1</mat-icon>
+          </button>
+        </div>
+
+      </div>
     </div>
     <br>
 
@@ -42,10 +64,20 @@
     </div>
     <br>
 
-    <label for="email">Email *</label>
+    <label for="email">Email <span>*</span></label>
     <mat-form-field>
-      <input matInput type="text" id="email" name="email" placeholder="example@gmail.com" ngModel />
+      <input matInput email #emailField="ngModel" type="email" id="email" name="email" placeholder="example@gmail.com"
+        required ngModel />
     </mat-form-field>
+    <mat-hint *ngIf="emailField.pristine">
+      Your email needs to be a valid email i.e. zacharychua91@gmail.com
+    </mat-hint>
+    <mat-error *ngIf="emailField.dirty && emailField.hasError('email')">
+      Invalid email format
+    </mat-error>
+    <mat-error *ngIf="emailField.hasError('required') && emailField.touched">
+      Please fill in your email!
+    </mat-error>
     <br>
 
     <div fxLayout="column" fxLayoutGap="3vh">
@@ -63,7 +95,7 @@
         Saturday formal dinner <input type="checkbox" id="event_4" name="event_4" ngModel />
       </div>
     </div>
-
+    <br>
     <br>
 
     <div fxLayout="column" fxLayoutGap="3vh">
@@ -76,6 +108,21 @@
       </div>
     </div>
     <br>
+    <br>
+
+    <label for="secret">Tell me your secret >=) <span>*</span></label>
+    <mat-form-field>
+      <input matInput type="password" id="secret" name="secret" #secretField="ngModel"
+        placeholder="Input your secret here =p" minlength="10" maxlength="50" required ngModel />
+    </mat-form-field>
+    <mat-hint *ngIf="secretField.pristine">
+      Your secret should contain at least 10 characters!
+    </mat-hint>
+    <mat-error *ngIf="secretField.dirty && secretField.hasError('minlength')">
+      Your secret is too short!
+    </mat-error>
+    <br>
+    <br>
 
     <label for="comment">Comments or Questions</label>
     <mat-form-field>
@@ -83,10 +130,46 @@
     </mat-form-field>
 
     <div fxLayout="row" fxLayoutAlign="space-around center">
-      <button mat-raised-button color="primary" type="submit">Submit</button>
-      <button mat-raised-button color="primary" type="submit">Cancel</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="regForm.invalid">Submit</button>
+      <button mat-raised-button color="primary" type="reset">Clear</button>
     </div>
     <br>
+    <div>
+      <mat-hint class="inline" *ngIf="dateField.untouched">
+          &bull;&nbsp;Date needs to be filled&nbsp;
+      </mat-hint>
+      <mat-error class="inline" *ngIf="dateField.invalid && dateField.touched">
+          &bull;&nbsp;Date is not filled or invalid&nbsp;
+      </mat-error>
+
+      <mat-hint class="inline" *ngIf="firstNameField.untouched">
+          &bull;&nbsp;First name needs to be filled&nbsp;
+      </mat-hint>
+      <mat-error class="inline" *ngIf="firstNameField.invalid && firstNameField.touched">
+          &bull;&nbsp;First name is not filled or invalid&nbsp;
+      </mat-error>
+
+      <mat-hint *ngIf="secondNameField.untouched">
+          &bull;&nbsp;Second name needs to be filled&nbsp;
+      </mat-hint>
+      <mat-error *ngIf="secondNameField.invalid && secondNameField.touched">
+          &bull;&nbsp;Second name is not filled or invalid&nbsp;
+      </mat-error>
+
+      <mat-hint class="inline" *ngIf="emailField.untouched">
+          &bull;&nbsp;Email needs to be filled&nbsp;
+      </mat-hint>
+      <mat-error class="inline" *ngIf="emailField.invalid && emailField.touched">
+          &bull;&nbsp;Email is not filled or invalid&nbsp;
+      </mat-error>
+
+      <mat-hint class="inline" *ngIf="secretField.untouched">
+          &bull;&nbsp;Secret needs to be filled&nbsp;
+      </mat-hint>
+      <mat-error class="inline" *ngIf="secretField.invalid && secretField.touched">
+          &bull;&nbsp;Secret is not filled or invalid&nbsp;
+      </mat-error>
+    </div>
 
   </form>
 </div>

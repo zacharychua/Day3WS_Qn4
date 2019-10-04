@@ -6,21 +6,43 @@ form{
     min-width: 150px;
     max-width: 500px;
     width: 100%;
-    border: 1px solid lightgray;
+    border: 15px solid transparent;
+    border-image: url(/assets/border.png) 100/10px round;
+    padding: 0.3vw;
+}
+
+span{
+    color: red;
 }
 
 input:not(#event_1,#event_2,#event_3,#event_4){
     width: 100%;
 }
 
-button{
+button:not(.person){
     width: 15vw;
     max-width: 100px;
+}
+
+.person{
+    width:3vw;
+    height:auto;
+    min-width: 30px !important;
+    padding: 0px !important;
+}
+
+
+mat-hint, mat-error{
+    font-size: 0.8em;
 }
 
 .checkboxes{
     width: 20vw;
     max-width: 300px;
+}
+
+.inline{
+    display: inline;
 }
 
 #date{
