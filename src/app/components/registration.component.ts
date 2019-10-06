@@ -9,7 +9,6 @@ import {registration} from '../models';
 })
 export class RegistrationComponent implements OnInit {
 
-  //req_dvd; //used for Angular Material's Radio Button
   guest_i: number;
   guest_num: number[];
 
@@ -29,9 +28,13 @@ export class RegistrationComponent implements OnInit {
     let form_value_keys = Object.keys(form_value);
     console.info(form_value_keys);
     for(let key of form_value_keys){
-      if(key.includes("event")) 
+      if(key.includes("event")) {
         if(form_value[key]) events.push({key:form_value[key]});
+        console.info(events[events.indexOf(form_value[key])]);
+      }
+        
     }
+    
     for(let key of form_value_keys){
       if(key.includes("guest_first")) 
         if(form_value[key]) guest_first_names.push({key:form_value[key]});
