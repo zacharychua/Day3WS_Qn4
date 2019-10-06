@@ -22,7 +22,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/manifest.json", 
+              "src/manifest.json",
               "src/images"
             ],
             "styles": [
@@ -121,6 +121,12 @@
             "production": {
               "devServerTarget": "Qn4WS:serve:production"
             }
+          }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "/Day3WS_Qn4/"
           }
         }
       }
