@@ -126,7 +126,6 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
-            "baseHref": "/Day3WS_Qn4/"
           }
         }
       }
